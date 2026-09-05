@@ -1,0 +1,68 @@
+name: clean_shore
+description: "Чистый берег — экологический мониторинг и квесты"
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State management
+  flutter_bloc: ^8.1.6
+  equatable: ^2.0.5
+
+  # Networking
+  dio: ^5.7.0
+  pretty_dio_logger: ^1.4.0
+  url_launcher: ^6.3.1
+
+  # Local storage / auth token persistence
+  flutter_secure_storage: ^9.2.2
+  shared_preferences: ^2.3.2
+
+  # Location & Maps
+  geolocator: ^13.0.1
+  yandex_mapkit: ^4.2.0
+
+  # Camera
+  camera: ^0.11.0+2
+  image_picker: ^1.1.2
+  path_provider: ^2.1.4
+
+  # UI
+  cupertino_icons: ^1.0.8
+  google_fonts: ^6.2.1
+  flutter_svg: ^2.0.10+1
+  shimmer: ^3.0.0
+  flutter_markdown: ^0.7.4+2
+
+  # Utilities
+  intl: ^0.19.0
+  uuid: ^4.5.1
+  json_annotation: ^4.9.0
+  get_it: ^8.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+  build_runner: ^2.4.13
+  json_serializable: ^6.8.0
+  bloc_test: ^9.1.7
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/icons/
+
+  fonts:
+    - family: Manrope
+      fonts:
+        - asset: assets/fonts/Manrope-Regular.ttf
+        - asset: assets/fonts/Manrope-Bold.ttf
+          weight: 700

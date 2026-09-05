@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, UploadFile, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.dependencies import get_current_user
@@ -7,6 +7,7 @@ from app.core.database import get_db
 from app.models.pollution_spot import PollutionSpot, SpotStatus
 from app.models.user import User
 from app.schemas.spot import (
+    PhotoUploadResponse,
     SpotCleanupRequest,
     SpotCleanupResult,
     SpotRead,
@@ -14,9 +15,13 @@ from app.schemas.spot import (
     SpotSearchResult,
 )
 from app.services import spatial_service
+from app.services.s3_service import s3_service
 from app.services.vision_service import VisionServiceError, vision_service
 
 router = APIRouter(prefix="/quests", tags=["Quests"])
+
+ALLOWED_CONTENT_TYPES = {"image/jpeg", "image/png", "image/webp"}
+MAX_UPLOAD_SIZE_BYTES = 10 * 1024 * 1024
 
 
 def _to_spot_read(spot: PollutionSpot) -> SpotRead:
@@ -47,6 +52,35 @@ def _calculate_cleanup_rating(contamination_delta: int) -> int:
     span = settings.RATING_CLEANUP_MAX - settings.RATING_CLEANUP_MIN
     ratio = min(max(contamination_delta / 100, 0), 1)
     return settings.RATING_CLEANUP_MIN + round(ratio * span)
+
+
+@router.post("/upload-photo", response_model=PhotoUploadResponse, status_code=status.HTTP_201_CREATED)
+async def upload_photo(
+    file: UploadFile,
+    _current_user: User = Depends(get_current_user),
+) -> PhotoUploadResponse:
+    if file.content_type not in ALLOWED_CONTENT_TYPES:
+        raise HTTPException(
+            status_code=status.HTTP_415_UNSUPPORTED_MEDIA_TYPE,
+            detail="Допустимые форматы: JPEG, PNG, WEBP",
+        )
+
+    content = await file.read()
+
+    if len(content) > MAX_UPLOAD_SIZE_BYTES:
+        raise HTTPException(
+            status_code=status.HTTP_413_REQUEST_ENTITY_TOO_LARGE,
+            detail="Максимальный размер файла — 10 МБ",
+        )
+
+    url = await s3_service.upload_photo(
+        content=content,
+        filename=file.filename or "photo.jpg",
+        content_type=file.content_type,
+        folder="spots",
+    )
+
+    return PhotoUploadResponse(url=url)
 
 
 @router.post("/search", response_model=SpotSearchResult, status_code=status.HTTP_201_CREATED)
