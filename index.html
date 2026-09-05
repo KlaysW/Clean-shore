@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Чистый берег — мониторинг морских побережий</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="bg-decorations">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="wave-bg"></div>
+  </div>
+
+  <header>
+    <div class="container header-inner">
+      <a href="#" class="logo">
+        <span class="logo-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 12c2-3 4-3 6 0s4 3 6 0 4-3 6 0"></path>
+            <path d="M2 18c2-3 4-3 6 0s4 3 6 0 4-3 6 0"></path>
+          </svg>
+        </span>
+        Чистый берег
+      </a>
+
+      <div class="auth-buttons">
+        <button type="button" class="btn-ghost" id="open-login">Войти</button>
+        <button type="button" class="btn-solid" id="open-register">Регистрация</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="auth-overlay" id="auth-overlay" data-mode="register">
+    <div class="auth-modal">
+      <div class="auth-modal-top">
+        <div class="auth-tabs">
+          <button type="button" class="auth-tab" data-mode="register" id="tab-register">Регистрация</button>
+          <button type="button" class="auth-tab" data-mode="login" id="tab-login">Вход</button>
+        </div>
+        <button type="button" class="auth-close" id="auth-close" aria-label="Закрыть">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <form id="auth-form">
+        <div class="auth-field name-only">
+          <label for="auth-name">Имя</label>
+          <input id="auth-name" type="text" placeholder="Как к вам обращаться" />
+        </div>
+        <div class="auth-field">
+          <label for="auth-email">Почта</label>
+          <input id="auth-email" type="email" placeholder="you@example.com" required />
+        </div>
+        <div class="auth-field">
+          <label for="auth-pass">Пароль</label>
+          <input id="auth-pass" type="password" placeholder="Минимум 8 символов" minlength="8" required />
+        </div>
+        <button type="submit" class="auth-submit" id="auth-submit">Создать аккаунт</button>
+      </form>
+
+      <div class="auth-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
+        Сквозная авторизация: один аккаунт для сайта и приложения
+      </div>
+    </div>
+  </div>
+
+  <section class="problems container">
+    <div class="section-header">
+      <span class="eyebrow">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+        Данные космического мониторинга
+      </span>
+      <h1>Морские побережья в опасности</h1>
+      <p class="section-lead">
+        Спутники и экологические службы фиксируют критические загрязнения на береговой линии России.
+      </p>
+    </div>
+
+    <div class="problem-grid">
+      <article class="problem-card">
+        <div class="photo">
+          <img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?auto=format&fit=crop&w=900&q=80" alt="Куршская коса" />
+          <span class="card-tag">Балтика</span>
+        </div>
+        <div class="body">
+          <h3>Балтийское море — Куршская коса</h3>
+          <p>Скапливание пластиковой тары и микропластика на уникальных песчаных дюнах после осенне-зимних штормов.</p>
+        </div>
+      </article>
+
+      <article class="problem-card">
+        <div class="photo">
+          <img src="https://images.unsplash.com/photo-1618477388954-7852f32655ec?auto=format&fit=crop&w=900&q=80" alt="Чёрное море, Анапа" />
+          <span class="card-tag">Чёрное море</span>
+        </div>
+        <div class="body">
+          <h3>Чёрное море — Анапа</h3>
+          <p>Сезонное замусоривание песчаных пляжей бытовым пластиком и смыв бытовых отходов во время обильных дождей.</p>
+        </div>
+      </article>
+
+      <article class="problem-card">
+        <div class="photo">
+          <img src="https://images.unsplash.com/photo-1502790671504-542ad42d5189?auto=format&fit=crop&w=900&q=80" alt="Сахалин" />
+          <span class="card-tag">Дальний Восток</span>
+        </div>
+        <div class="body">
+          <h3>Охотское море — Корсаков (Сахалин)</h3>
+          <p>Скопление затонувших судов, брошенных рыболовных сетей и пластиковой тары вдоль береговой линии.</p>
+        </div>
+      </article>
+
+      <article class="problem-card">
+        <div class="photo">
+          <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=900&q=80" alt="Камчатка" />
+          <span class="card-tag">Тихий океан</span>
+        </div>
+        <div class="body">
+          <h3>Тихий океан — Авачинская губа (Камчатка)</h3>
+          <p>Загрязнение Халактырского пляжа прибрежным мусором и остатками судовых нефтепродуктов.</p>
+        </div>
+      </article>
+
+      <article class="problem-card">
+        <div class="photo">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80" alt="Азовское море" />
+          <span class="card-tag">Азов</span>
+        </div>
+        <div class="body">
+          <h3>Азовское море — Таманский полуостров</h3>
+          <p>Загрязнение ракушечных пляжей промышленным и бытовым мусором, заносимым штормами из пролива.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="donate-section">
+    <div class="container flex-center">
+      <div class="donate-card">
+        <div class="donate-badge">Поддержать проект</div>
+        <h2>Скинуть Донат</h2>
+
+        <div class="donate-field">
+          <label for="donate-amount">Сумма пожертвования</label>
+          <div class="amount-input">
+            <input id="donate-amount" type="number" min="20" placeholder="1000" />
+            <span class="currency-badge">RUB</span>
+          </div>
+        </div>
+
+        <div class="donate-field">
+          <label>Способ оплаты</label>
+          <button type="button" class="pay-method-option active" id="pay-method-btn">
+            <span class="radio-dot"></span>
+            <span class="pay-method-text">
+              <span class="label">Банковской картой</span>
+              <span class="hint">Мин. 20 ₽ · Без комиссии</span>
+            </span>
+          </button>
+        </div>
+
+        <button class="donate-submit" id="donate-submit">Оплатить пожертвование</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="download-section">
+    <div class="container">
+      <h2>Скачать мобильное приложение</h2>
+      <p>Мониторинг, обучение анализу космоснимков и координация уборок — в приложении «Чистый берег».</p>
+
+      <div class="download-wrap">
+        <button class="download-btn" id="download-btn">Скачать приложение</button>
+        <div class="download-menu" id="download-menu">
+          <a href="#ios">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.85c.66-.8 1.11-1.92.99-3.04-.96.04-2.12.64-2.81 1.44-.61.71-1.14 1.86-1 2.98 1.08.08 2.17-.58 2.82-1.38z"/></svg>
+            App Store (iOS)
+          </a>
+          <a href="#android">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3.6 1.8L15.3 12 3.6 22.2c-.4.3-.9.1-.9-.4V2.2c0-.5.5-.7.9-.4zm13.1 8.9l3.5 2c.7.4.7 1.4 0 1.8l-3.5 2-2.6-2.7 2.6-3.1zm-1.8-1.5L4.7 3.3l10.2 5.9zm0 9.6l-10.2 5.9 10.2-5.9z"/></svg>
+            Google Play (Android)
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> <strong>Чистый берег</strong>. Все права защищены.</div>
+      <div>Партнёры: Роскосмос · Яндекс.Облако</div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
